@@ -8,7 +8,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j = 0;
 	char buff[1024];
-	char tmp[100];
 	char *strptr;
 		va_list pt;
 
@@ -37,7 +36,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			buff[j] = format[i]
+			buff[j] = format[i];
 				j++;
 		}
 		i++;
