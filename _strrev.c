@@ -6,8 +6,8 @@
  */
 char *_strrev (char *str)
 {
-  int i;
-  int len = 0;
+ long int i;
+ long  int len = 0;
   char c;
   if (!str)
     return NULL;

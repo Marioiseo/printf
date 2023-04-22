@@ -9,7 +9,7 @@
 char * _itoa(int i, char *strout, int base)
 {
   char *str = strout;
-  int digit, sign = 0;
+ long  int digit, sign = 0;
   if (i < 0) {
     sign = 1;
     i *= -1;

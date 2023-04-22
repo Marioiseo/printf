@@ -9,6 +9,7 @@
 int _printf(const char *format, ...);
 char *_strrev (char *str);
 char * _itoa(int i, char *strout, int base);
+int _putchar(char c);
 
 
 #endif

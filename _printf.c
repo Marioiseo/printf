@@ -13,6 +13,8 @@ int _printf(const char *format, ...)
 	char tmp[1024];
 
 	va_start(pt, format);
+	if (format == NULL)
+		return (-1);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -56,7 +58,7 @@ int _printf(const char *format, ...)
 				}
 				case 'x':
 				{
-					_itoa(va_arg(pt, int), tmp, 8);
+					_itoa(va_arg(pt, int), tmp, 16);
 					strcpy(&buff[j], tmp);
 					j += strlen(tmp);
 					break;
