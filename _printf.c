@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 					j++;
 					break;
 				}
-				default
+				default:
 					buff[j] = format[i];
 				j++;
 				break;
