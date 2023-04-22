@@ -10,6 +10,7 @@ int _printf(const char *format, ...)
 	char buff[1024];
 	char *strptr;
 		va_list pt;
+	char tmp[1024];
 
 	va_start(pt, format);
 	while (format && format[i])
@@ -31,6 +32,34 @@ int _printf(const char *format, ...)
 						strcpy(&buff[j], strptr);
 						j += strlen(strptr);
 						break;
+				}
+				case 'd':
+				{
+					_itoa(va_arg(pt, int), tmp, 10);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
+				case 'i':
+				{
+					_itoa(va_arg(pt, int), tmp, 10);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
+				case 'o':
+				{
+					_itoa(va_arg(pt, int), tmp, 8);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
+				case 'x':
+				{
+					_itoa(va_arg(pt, int), tmp, 8);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
 				}
 				case '%':
 				{
