@@ -38,6 +38,10 @@ int _printf(const char *format, ...)
 					j++;
 					break;
 				}
+				default
+					buff[j] = format[i];
+				j++;
+				break;
 			}
 		}
 		else
