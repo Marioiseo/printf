@@ -1,4 +1,6 @@
 #include "main.h"
+
+
 /**
  * _printf - my first advanced implementation
  * @format: its the % i guess
@@ -49,6 +51,13 @@ int _printf(const char *format, ...)
 					j += strlen(tmp);
 					break;
 				}
+				case 'b':
+				{
+					_itoau(va_arg(pt, int), tmp, 2);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
 				case 'o':
 				{
 					_itoau(va_arg(pt, int), tmp, 8);
@@ -63,6 +72,14 @@ int _printf(const char *format, ...)
 					j += strlen(tmp);
 					break;
 				}
+				case 'X':
+				{
+					_itoau(va_arg(pt, int), tmp, 16);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
+
 				case '%':
 				{
 					buff[j] = '%';
@@ -86,7 +103,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			buff[j] = format[i];
-				j++;
+			j++;
 		}
 		i++;
 	}

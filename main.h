@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 int _printf(const char *format, ...);
 char *_strrev (char *str);
 char * _itoau(unsigned int i, char *strout, int base);
