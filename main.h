@@ -5,9 +5,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
 
-#define BUFF_SIZE 1024
 
 int _printf(const char *format, ...);
 char *_strrev (char *str);

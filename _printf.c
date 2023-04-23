@@ -1,6 +1,5 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *index);
 
 /**
  * _printf - my first advanced implementation
@@ -9,8 +8,8 @@ void print_buffer(char buffer[], int *index);
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, index = 0;
-	char buff[BUFF_SIZE];
+	int i = 0, j = 0;
+	char buff[1024];
 	char *strptr;
 		va_list pt;
 	char tmp[1024];
@@ -81,25 +80,11 @@ int _printf(const char *format, ...)
 		else
 		{
 			buff[j] = format[i];
-			if (j == BUFF_SIZE)
-				print_buffer(buff, &j);
 			j++;
 		}
 		i++;
 	}
-	print_buffer(buff, &j);
+	fwrite(buff, j, 1, stdout);
 	va_end(pt);
 	return (j);
-}
-
-/**
- * print_buffer - Prints the contents of the buffer if it exist
- * @buffer: Array of chars
- * @index: Index at which to add next char, represents the length.
- */
-void print_buffer(char buffer[], int *index)
-{
-	if (index > 0)
-		write(1, &buffer[0], *index);
-	*index = 0;
 }
