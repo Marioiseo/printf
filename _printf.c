@@ -51,14 +51,14 @@ int _printf(const char *format, ...)
 				}
 				case 'o':
 				{
-					_itoa(va_arg(pt, int), tmp, 8);
+					_itoau(va_arg(pt, int), tmp, 8);
 					strcpy(&buff[j], tmp);
 					j += strlen(tmp);
 					break;
 				}
 				case 'x':
 				{
-					_itoa(va_arg(pt, int), tmp, 16);
+					_itoau(va_arg(pt, int), tmp, 16);
 					strcpy(&buff[j], tmp);
 					j += strlen(tmp);
 					break;
@@ -69,10 +69,18 @@ int _printf(const char *format, ...)
 					j++;
 					break;
 				}
+				case 'u':
+				{
+					_itoau(va_arg(pt, int), tmp, 10);
+					strcpy(&buff[j], tmp);
+					j += strlen(tmp);
+					break;
+				}
 				default:
+			{
 					buff[j] = format[i];
-				j++;
-				break;
+					j++;
+			}
 			}
 		}
 		else

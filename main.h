@@ -8,6 +8,7 @@
 
 int _printf(const char *format, ...);
 char *_strrev (char *str);
+char * _itoau(unsigned int i, char *strout, int base);
 char * _itoa(int i, char *strout, int base);
 int _putchar(char c);
 
