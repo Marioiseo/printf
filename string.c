@@ -16,7 +16,8 @@ char *get_precision(char *p, params_t *params, va_list ap)
 		return (p);
 	p++;
 	if (*p == '*')
-	{d = va_arg(ap, int);
+	{
+		d = va_arg(ap, int);
 		p++;}
 	else{
 		while (_isdigit(*p))
