@@ -8,106 +8,31 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0;
-	char buff[1024];
-	char *strptr;
-		va_list pt;
-	char tmp[1024];
+	int i = 0;
+	va_list pt;
+	int count = 0;
+	char *poi;
 
 	va_start(pt, format);
-	if (format == NULL)
+	if (!format || (format[0] == '%' && !format[i]))
 		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	       return (-1);
 	while (format && format[i])
 	{
-		if (format[i] == '%')
+		poi = (char *)format;
+		if (*poi == '%')
 		{
-			i++;
-			switch (format[i])
-			{
-				case 'c':
-					{
-						buff[j] = (char)va_arg(pt, int);
-						j++;
-						break;
-					}
-				case 's':
-				{
-						strptr = va_arg(pt, char *);
-						strcpy(&buff[j], strptr);
-						j += strlen(strptr);
-						break;
-				}
-				case 'd':
-				{
-					_itoa(va_arg(pt, int), tmp, 10);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				case 'i':
-				{
-					_itoa(va_arg(pt, int), tmp, 10);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				case 'b':
-				{
-					_itoau(va_arg(pt, int), tmp, 2);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				case 'o':
-				{
-					_itoau(va_arg(pt, int), tmp, 8);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				case 'x':
-				{
-					_itoau(va_arg(pt, int), tmp, 16);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				case 'X':
-				{
-					_itoau(va_arg(pt, int), tmp, 16);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-
-				case '%':
-				{
-					buff[j] = '%';
-					j++;
-					break;
-				}
-				case 'u':
-				{
-					_itoau(va_arg(pt, int), tmp, 10);
-					strcpy(&buff[j], tmp);
-					j += strlen(tmp);
-					break;
-				}
-				default:
-			{
-					buff[j] = format[i];
-					j++;
-			}
-			}
+			poi++;
+		count += get_spec(poi, pt);
 		}
 		else
 		{
-			buff[j] = format[i];
-			j++;
+		_putchar(*poi);
+		count++;
 		}
 		i++;
 	}
-	fwrite(buff, j, 1, stdout);
 	va_end(pt);
-	return (j);
+	return (count);
 }
