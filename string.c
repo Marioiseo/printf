@@ -20,8 +20,10 @@ char *get_precision(char *p, params_t *params, va_list ap)
 		d = va_arg(ap, int);
 		p++;
 	}
-	else{
+	else
+	{
 		while (_isdigit(*p))
-			d = d * 10 + (*p++ - '0');}
+			d = d * 10 + (*p++ - '0');
+	}
 	params->precision = d;
 	return (p);}
